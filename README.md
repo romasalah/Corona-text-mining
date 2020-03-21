@@ -15,11 +15,10 @@ Since experimental research article abstracts usually report the findings or the
 filtering steps were as follows:
 1. Removing supplementary material documents by removing all articles with titles that included either  {'Supplementary','appendi*','material*','figure*'}.
 2. Removing articles with empty abstracts (they are probably supplementary materials).
-3. filtering out review articles by looking for abstracts with the keywords{'review','overview','surv'}.
-4. Keeping in ONLY abstracts that contain Corona virus related keywords(trying to exclude coronary artery keywords) {'SARS-CoV-2','corona ','COVID','coronavirus'} and I need More recoomendations on that.
-5. Trying to keep in abstracts that include findigs or a conclusion by looking for abstracts which has the keywords {'results: ','found ','demonstrate','etermine','explain','show','uggest','rovide*','shed light','reveal','uncover','conclusion','conclude','overall',...
-    'summary','propose','report','illustrate','identified','present','indicate'}
-
+3. Getting location and filtering out review articles by looking for abstracts with the keywords{'review','overview','surv'}.
+4. Keeping in ONLY abstracts that contain Corona virus related keywords(trying to exclude coronary artery keywords) {'SARS-CoV-2','corona ','COVID','coronavirus'} and I need More recommendations on that.
+5. Trying to keep in abstracts that include findings or a conclusion by looking for abstracts which has the keywords {'results: ','found ','demonstrate','etermine','explain','show','suggest','provide*','shed light','reveal','uncover','conclusion','conclude','overall','summary','propose','report','illustrate','identified','present','indicate'}
+6. Getting location and filtering out corona related articles that don't contain (or I could't retrieve) findings or conclusion.
     
 # preprocessing
-
+1. In abstracts that contain finindgs or a conclusion, I removed all the sentences before the keywords indicate a result (mentioned above) and since almost all research articles report the finding at the end of the abstract, I'm only left with the findings. 
