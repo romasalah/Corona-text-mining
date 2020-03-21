@@ -13,10 +13,10 @@ Since experimental research article abstracts usually report the finidings or th
 
 # filtering
 filtering steps were as follows:
-    1. Removing supplementary material documents by removing all articles with titles that included either   {'Supplementary','appendi*','material*','figure*'}.
-    2. Removing articles with empty abstracts (they are probably supplementary materials).
-    3. filtering out review articles by looking for abstracts with the keywords{'review','overview','surv'}.
-    4. Keeping in ONLY abstracts that contain Corona virus related keywords(trying to exclude coronary artery keywords) {'SARS-CoV-2','corona ','COVID','coronavirus'} and I need More recoomendations on that.
+1. Removing supplementary material documents by removing all articles with titles that included either  {'Supplementary','appendi*','material*','figure*'}.
+2. Removing articles with empty abstracts (they are probably supplementary materials).
+3. filtering out review articles by looking for abstracts with the keywords{'review','overview','surv'}.
+4. Keeping in ONLY abstracts that contain Corona virus related keywords(trying to exclude coronary artery keywords) {'SARS-CoV-2','corona ','COVID','coronavirus'} and I need More recoomendations on that.
     
 # preprocessing
  
