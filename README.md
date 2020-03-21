@@ -9,7 +9,7 @@ a combiation of 9000 research article that contanin certain keywords related to 
 Note: because of the overlap between "coronary artery" and "corona", excpect to see some "coronary article" research articles in the original dataset, I tried to filter them as much as possible in the preprocessed dataset.
 
 1. First 
-Since experimental research article abstracts usually report the finidings or the conclusion of the experiment, I thought it was a good way to start is to textmine article abstracts instead of the body.
+Since experimental research article abstracts usually report the findings or the conclusion of the experiment, I thought it was a good way to start is to textmine article abstracts instead of the body.
 
 # filtering
 filtering steps were as follows:
@@ -17,6 +17,9 @@ filtering steps were as follows:
 2. Removing articles with empty abstracts (they are probably supplementary materials).
 3. filtering out review articles by looking for abstracts with the keywords{'review','overview','surv'}.
 4. Keeping in ONLY abstracts that contain Corona virus related keywords(trying to exclude coronary artery keywords) {'SARS-CoV-2','corona ','COVID','coronavirus'} and I need More recoomendations on that.
+5. Trying to keep in abstracts that include findigs or a conclusion by looking for abstracts which has the keywords {'results: ','found ','demonstrate','etermine','explain','show','uggest','rovide*','shed light','reveal','uncover','conclusion','conclude','overall',...
+    'summary','propose','report','illustrate','identified','present','indicate'}
+
     
 # preprocessing
- 
+
