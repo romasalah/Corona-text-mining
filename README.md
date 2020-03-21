@@ -22,3 +22,7 @@ filtering steps were as follows:
     
 # preprocessing
 1. In abstracts that contain finindgs or a conclusion, I removed all the sentences before the keywords indicate a result (mentioned above) and since almost all research articles report the finding at the end of the abstract, I'm only left with the findings. 
+
+# Preprocessed dataset
+1. Abstracts with results corona_abstracts_results.xls
+2. Abstracts with no results (you probably don't need that except for retrieving what I missed) corona_abstracts_noresults.xls 
