@@ -19,12 +19,8 @@ def find_text(patternlist,textlist):
             if not curtitle==None:
              if suppkeywords[patterni].lower() in curtitle.lower():
                  c.append(texti)
-        indices[patterni]=c
-             
-        indices[patterni] = [i for i, curtitle in enumerate(titles) if suppkeywords[patterni] in curtitle]
-     
-     #     temp=re.findall(suppkeywords[patterni],titles)
-         
+        indices[patterni]=c    
+        indices[patterni] = [i for i, curtitle in enumerate(titles) if suppkeywords[patterni] in curtitle]  
         
 
 
