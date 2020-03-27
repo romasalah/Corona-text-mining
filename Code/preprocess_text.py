@@ -21,11 +21,11 @@ def find_text(patternlist,textlist,combine=1):
         supptemp=[]
         supppostemp=[]
         nonsupptemp=[]
-        for texti, curtitle in enumerate(titles):
+        for texti, curtitle in enumerate(textlist):
             if not curtitle==None:
-             if suppkeywords[patterni].lower() in curtitle.lower():
+             if patternlist[patterni].lower() in curtitle.lower():
                  supptemp.append(texti)
-                 supppostemp.append(curtitle.lower().find(suppkeywords[patterni].lower()))
+                 supppostemp.append(curtitle.lower().find(patternlist[patterni].lower()))
              else:
                  nonsupptemp.append(texti)
         suppindices[patterni]=supptemp
@@ -33,9 +33,7 @@ def find_text(patternlist,textlist,combine=1):
         nonsuppindices[patterni]=nonsupptemp
     if combine==1:
         nonsuppindices=combine_indices(nonsuppindices,'intersection')
-        nonsuppindices=nonsuppindices[0]
         suppindices=combine_indices(suppindices,'union')
-        suppindices=suppindices[0]
     return nonsuppindices,suppindices,suppposindices
 
 def filter_paragraphs(patternlist,textlist,method):
@@ -44,16 +42,15 @@ def filter_paragraphs(patternlist,textlist,method):
     for patterni in range(len(patternlist)):
         supptemp=[]
         supppostemp=[]
-        for texti, curtitle in enumerate(titles):
+        for texti, curtitle in enumerate(textlist):
             if not curtitle==None:
-                curkeyword=suppkeywords[patterni].lower()
+                curkeyword=patternlist[patterni].lower()
             if curkeyword in curtitle.lower():
                  supptemp.append(texti)
                  keywordpos=curtitle.lower().find(curkeyword)
                  endofsentences=re.findall('\.\s',curtitle)
                  presentencesend=endofsentences < keywordpos
                  startsentence_i=presentencesend[-1]
-                 pdb.set_trace()
                  supppostemp.append(keywordpos)
         patternindices[patterni]=supptemp
         patternposindices[patterni]=supppostemp                
@@ -65,9 +62,9 @@ def combine_indices(allindices,function):
     combined=[]
     for i in range(0,len(allindices)-1):
         if function=='union':
-            combined.append(np.union1d(allindices[i],allindices[i+1]))
+            combined.extend(np.union1d(allindices[i],allindices[i+1]))
         elif function=='intersection':
-            combined.append(np.intersect1d(allindices[i],allindices[i+1]))
+           combined.extend(np.intersect1d(allindices[i],allindices[i+1]))
     return combined
         
 def filter_lists(titles,abstracts,bodies,indices):
@@ -110,7 +107,7 @@ resultskeywords=['esults: ','found ','emonstrate','etermine',
     'eveal','ncover','onclusion','conclude','verall',
     'ummary','ropose','eport','illustrat','identified'
     'present','indicate']
-covidkeywords=['SARS-CoV-2','corona ','COVID','coronavirus']
+covidkeywords=['SARS-CoV-2','corona','COVI','coronavirus']
 
 # load text
 titles,abstracts,bodies=load_text(basedir)
@@ -119,10 +116,10 @@ nonsupp_i,supp_i,_=find_text(suppkeywords,titles)
 titles,abstracts,bodies=filter_lists(titles,abstracts,bodies,nonsupp_i)
 # remove reviews
 pdb.set_trace()
-nonreview_i,review_i,_=find_text(reviewkeywords,titles)
+nonreview_i,review_i,_=find_text(reviewkeywords,abstracts)
 titles,abstracts,bodies=filter_lists(titles,abstracts,bodies,nonreview_i)
 # keep covid articles
-noncovid_i,covid_i,_=find_text(covidkeywords,abstracts)
+noncovid_i,covid_i,_=find_text(covidkeywords,abstracts,combine=0)
 titles,abstracts,bodies=filter_lists(titles,abstracts,bodies,covid_i)
 #
 pdb.set_trace()
