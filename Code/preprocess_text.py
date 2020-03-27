@@ -116,7 +116,7 @@ nonsupp_i,supp_i,_=find_text(suppkeywords,titles)
 titles,abstracts,bodies=filter_lists(titles,abstracts,bodies,nonsupp_i)
 # remove reviews
 pdb.set_trace()
-nonreview_i,review_i,_=find_text(reviewkeywords,abstracts)
+nonreview_i,review_i,_=find_text(reviewkeywords,titles)
 titles,abstracts,bodies=filter_lists(titles,abstracts,bodies,nonreview_i)
 # keep covid articles
 noncovid_i,covid_i,_=find_text(covidkeywords,abstracts,combine=0)
